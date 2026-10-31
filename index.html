@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Us ❤️ Two Months</title>
+<meta name="theme-color" content="#2a1245">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="floaters" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div class="music" id="musicBar">
+  <button id="playBtn" aria-label="Play music" title="Play / pause">🎵</button>
+  <button id="muteBtn" aria-label="Mute" title="Mute / unmute">🔊</button>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<main>
+<!-- 1 INTRO -->
+<section class="scene" id="intro">
+  <h1 class="big" id="introTitle"></h1>
+  <p class="lead hidden" id="introQ">Guess what day it is?</p>
+  <div class="row hidden" id="introBtns">
+    <button class="btn" id="knowBtn">I know 😌</button>
+    <button class="btn alt" id="tellBtn">Tell me already! 😭</button>
+  </div>
+  <p class="reaction hidden" id="introReact"></p>
+  <h2 class="big pop hidden" id="introReveal">IT'S OUR TWO-MONTH ANNIVERSARY! 🥹❤️</h2>
+  <button class="btn glow hidden" id="openWorld">Open our little world ✨</button>
+</section>
+
+<!-- 2 MEMORIES -->
+<section class="scene" id="memories">
+  <h2 class="title">Our Memories 📸</h2>
+  <p class="sub">Tap a photo to see it bigger.</p>
+  <div class="gallery" id="gallery"></div>
+  <button class="btn" data-next="quiz">Now, a very serious quiz 😂</button>
+</section>
+
+<!-- 3 QUIZ -->
+<section class="scene" id="quiz">
+  <h2 class="title">The Funny Love Quiz 😂</h2>
+  <div class="card quizcard">
+    <p class="qcount" id="qCount"></p>
+    <h3 id="qText"></h3>
+    <div class="answers" id="qAnswers"></div>
+    <p class="reaction" id="qReact" aria-live="polite"></p>
+    <button class="btn hidden" id="qNext">Next</button>
+  </div>
+  <div class="final hidden" id="quizEnd">
+    <h3 class="big small" id="quizWin"></h3>
+    <p class="lead hidden" id="quizHonest"></p>
+    <button class="btn glow hidden" id="quizDone" data-next="together">Continue ❤️</button>
+  </div>
+</section>
+
+<!-- 4 TWO MONTHS -->
+<section class="scene" id="together">
+  <div class="heartring" aria-hidden="true"><span>❤️</span><span>💗</span><span>💖</span></div>
+  <h2 class="big gradient">Two Months of Us ❤️</h2>
+  <p class="date" id="dateText"></p>
+  <p class="lead" id="togetherMsg"></p>
+  <button class="btn" data-next="things">Little things I love 💌</button>
+</section>
+
+<!-- 5 THINGS -->
+<section class="scene" id="things">
+  <h2 class="title">Little Things I Love About You 💌</h2>
+  <p class="sub">Tap each card to open it.</p>
+  <div class="cards" id="loveCards"></div>
+  <button class="btn hidden" id="thingsNext" data-next="gift">One more thing… 🎁</button>
+</section>
+
+<!-- 6 GIFT -->
+<section class="scene" id="gift">
+  <p class="lead" id="giftPrompt">There's one more surprise for you...</p>
+  <button class="giftbox" id="giftBox" aria-label="Open the gift box">
+    <span class="lid"></span><span class="boxbody"></span><span class="glowburst"></span>
+  </button>
+  <div class="giftmsg hidden" id="giftMsg">
+    <h2 class="big small" id="giftH"></h2>
+    <p class="lead" id="giftP"></p>
+    <button class="btn" data-next="cinema">Continue 🌙</button>
+  </div>
+</section>
+
+<!-- 7 CINEMATIC INTRO -->
+<section class="scene" id="cinema">
+  <p class="cine hidden" id="cine1">Okay, jokes aside for a second...</p>
+  <p class="cine hidden" id="cine2">There's something I really want you to know. ❤️</p>
+  <button class="btn glow hidden" id="tellMe">Tell me 💗</button>
+</section>
+
+<!-- 8 LETTER -->
+<section class="scene" id="letter">
+  <article class="letter" id="letterBody" aria-live="polite"></article>
+  <button class="btn glow hidden" id="letterNext">Watch our little story 🎬</button>
+</section>
+
+<!-- 9 SLIDESHOW -->
+<section class="scene" id="show">
+  <div class="stage" id="stage"></div>
+  <p class="showcap" id="showCap"></p>
+  <div class="finale hidden" id="finale">
+    <div class="bigheart" aria-hidden="true">❤️</div>
+    <p class="cine" id="finaleA"></p>
+    <h2 class="big gradient" id="finaleB"></h2>
+    <button class="btn glow" id="restart">Relive our little story ↻</button>
+  </div>
+</section>
+</main>
+
+<div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav prev" id="lbPrev" aria-label="Previous photo">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-nav next" id="lbNext" aria-label="Next photo">›</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
